@@ -39,6 +39,10 @@ body {
 }
 
 .screen {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
     width: 360px;
     height: 10vh;
 
@@ -94,7 +98,17 @@ body {
     box-sizing: border-box;
   }
 
+.button:hover {
+    background-color: blue;
+    cursor: pointer;
+}
+
 img {
     width:33px;
     height:33px;
+}
+
+p {
+    margin-right: 10px;
+    font-size: 30px;
 }
