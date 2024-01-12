@@ -34,10 +34,10 @@ numberInput.forEach(btn => {
 operators.forEach(operator => {
     operator.addEventListener('click', () => {
         if (pendingOperation !== null) {
-            b = parseInt(screenText.innerHTML);
+            b = parseFloat(screenText.innerHTML);
             performPendingOperation()
         } else {
-            a = parseInt(screenText.innerHTML);
+            a = parseFloat(screenText.innerHTML);
         }
 
         runningText.innerHTML = screenText.innerHTML + " " + operator.innerHTML + " ";
@@ -70,7 +70,7 @@ DECIMAL.addEventListener('click', () => {
 
 EQUALS.addEventListener('click', () => {
     if (pendingOperation !== null) {
-        b = parseInt(screenText.innerHTML);
+        b = parseFloat(screenText.innerHTML);
         performPendingOperation()
         pendingOperation = null;
         inMiddleOfOperation = false;

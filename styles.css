@@ -5,6 +5,9 @@ body {
     justify-content: space-between;
     height: 100vh;
     margin: 0;
+    background-color: #ffe0c9;
+
+    font-family: 'Lato', sans-serif;
 }
 
 .container {
@@ -23,6 +26,8 @@ body {
     margin-top: 15vh;
 
     border: 1px solid black;
+    background-color: #221c42;
+    border-radius: 5px;
 }
 
 .border {
@@ -48,6 +53,7 @@ body {
     height: 10vh;
 
     border: 1px solid black;
+    background-color: #ffe0c9;
 }
 
  .button-container {
@@ -91,22 +97,23 @@ body {
 
 .button {
     padding: 20px;
-    border: 2px blue solid;
+    border: 2px #dde7dd79 solid;
     border-radius: 5px;
-    background-color: lightblue;
+    background-color: #dde7dd;
     font-size: 20px;
 
     box-sizing: border-box;
   }
 
 .button:hover {
-    background-color: blue;
+    background-color: #dde7ddbb;
     cursor: pointer;
 }
 
 img {
     width:33px;
     height:33px;
+    transition: transform 0.6s ease, scale 0.6s ease;
 }
 
 .screenText {
@@ -114,3 +121,21 @@ img {
     font-size: 30px;
 }
 
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    width: 100vw;
+    height: 7vh;
+    background-color: #221c42;
+    color: #ffe0c9;
+}
+
+
+
+
+.footer img:hover {
+    transform: rotate(360deg) scale(1.1);
+}
