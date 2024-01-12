@@ -2,6 +2,7 @@ const numberInput = Array.from(document.querySelectorAll('.num'));
 let screenText = document.querySelector('.screenText');
 const CLEAR = document.querySelector('.clear');
 const DELETE = document.querySelector('.delete');
+const DECIMAL = document.querySelector('.decimal');
 
 
 numberInput.forEach(btn => {
@@ -27,5 +28,11 @@ DELETE.addEventListener('click', () => {
 
     if (screenText.innerHTML.length === 0) {
         screenText.innerHTML = '0';
+    }
+});
+
+DECIMAL.addEventListener('click', () => {
+    if (!screenText.innerHTML.includes('.')){
+        screenText.innerHTML = screenText.innerHTML.concat('.');
     }
 });
