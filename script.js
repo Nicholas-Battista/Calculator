@@ -25,15 +25,15 @@ function handleNumericKey(key) {
 document.addEventListener('keydown', (event) => {
     const key = event.key;
     
-        if (key >= '0' && key <= '9') {
-            handleNumericKey(key);
-        } else if (key === '*' || key === '/' || key === '+' || key === '-') {
-            handleOperatorKey(key);
-        } else if (key === '=' || key === 'Enter') {
-            handleEqualsKey();
-        } else if (key === 'Backspace') {
-            handleBackspaceKey();
-        }
+    if (key >= '0' && key <= '9') {
+        handleNumericKey(key);
+    } else if (key === '*' || key === '/' || key === '+' || key === '-') {
+        handleOperatorKey(key);
+    } else if (key === '=' || key === 'Enter') {
+        handleEqualsKey();
+    } else if (key === 'Backspace') {
+        handleBackspaceKey();
+    }
 });
 
 function handleOperatorKey(key) {
@@ -48,7 +48,7 @@ function handleOperatorKey(key) {
 function handleEqualsKey() {
     if (pendingOperation !== null) {
         b = parseFloat(screenText.innerHTML);
-        performPendingOperation(pendingOperation);
+        performPendingOperation();
         pendingOperation = null;
         inMiddleOfOperation = false;
         runningText.innerHTML = runningText.innerHTML.concat(b) + " =";
@@ -80,15 +80,17 @@ operators.forEach(operator => {
     operator.addEventListener('click', () => {
         if (pendingOperation !== null) {
             b = parseFloat(screenText.innerHTML);
-            performPendingOperation()
+            performPendingOperation();
+            pendingOperation = operator.innerHTML;
+            runningText.innerHTML = screenText.innerHTML + " " + operator.innerHTML + " ";
+            inMiddleOfOperation = true;
         } else {
             a = parseFloat(screenText.innerHTML);
+            pendingOperation = operator.innerHTML;
+            runningText.innerHTML = screenText.innerHTML + " " + operator.innerHTML + " ";
+            inMiddleOfOperation = true;
         }
-
-        runningText.innerHTML = screenText.innerHTML + " " + operator.innerHTML + " ";
-        inMiddleOfOperation = true;
-        pendingOperation = operator.innerHTML;
-    })
+    });
 });
 
 CLEAR.addEventListener('click', () => {
@@ -117,7 +119,7 @@ DECIMAL.addEventListener('click', () => {
 EQUALS.addEventListener('click', () => {
     if (pendingOperation !== null) {
         b = parseFloat(screenText.innerHTML);
-        performPendingOperation()
+        performPendingOperation();
         pendingOperation = null;
         inMiddleOfOperation = false;
 
@@ -125,36 +127,40 @@ EQUALS.addEventListener('click', () => {
     }
 });
 
-function performPendingOperation(operator) {
-    switch (operator) {
+function performPendingOperation() {
+    switch (pendingOperation) {
         case '+':
             a = add(a, b);
             break;
         case '-':
             a = subtract(a, b);
             break;
-        case '*':
+        case '×':
             a = multiply(a, b);
             break;
         case '/':
             a = divide(a, b);
             break;
     }
-    screenText.innerHTML = result;
+    screenText.innerHTML = a;
 }
 
 function add(a, b){
-    return result = a + b;
- }
+    return a + b;
+}
  
- function subtract(a, b){
-     return result = a - b;
- }
- 
- function multiply(a, b){
-     return result = a * b;
- }
- 
- function divide(a, b){
-     return result = a / b;
- }
+function subtract(a, b){
+    return a - b;
+}
+
+function multiply(a, b){
+    return a * b;
+}
+
+function divide(a, b){
+    if (b === 0) {
+        alert("Cannot divide by zero!");
+        return 0;
+    }
+    return a / b;
+}

@@ -6,7 +6,6 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #ffe0c9;
-
     font-family: 'Lato', sans-serif;
     touch-action: manipulation;
 }
@@ -96,19 +95,21 @@ body {
     padding: 20px;
     border: 2px #dde7dd79 solid;
     border-bottom: 2px solid #221c4241;
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: #dde7dd;
     font-size: 20px;
     color: #221c42;
-
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
+    box-shadow: 0px 10px 20px rgba(34, 28, 66, 0.8);
+    transition: box-shadow 0.3s ease;
   }
 
 .button:hover {
     background-color: #dde7ddf1;
     border: 1px solid #6a8f6b;
     cursor: pointer;
+    box-shadow: 0px 15px 25px rgba(34, 28, 66, 0.9);
 }
 
 img {
@@ -137,7 +138,7 @@ img {
     height: 7vh;
     border-top: 3px solid #6a8f6b;
     background-color: #221c42;
-    color: #ffe0c9;
+    color: #dde7dd;
 }
 
 .footer img:hover {
