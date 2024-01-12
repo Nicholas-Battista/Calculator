@@ -25,7 +25,7 @@ body {
 
     margin-top: 15vh;
 
-    border: 1px solid black;
+    border: 3px solid #6a8f6b;
     background-color: #221c42;
     border-radius: 5px;
 }
@@ -52,7 +52,7 @@ body {
     width: 360px;
     height: 10vh;
 
-    border: 1px solid black;
+    border: 2px solid #6a8f6b;
     background-color: #ffe0c9;
     overflow: hidden; 
     white-space: nowrap;
@@ -111,7 +111,7 @@ body {
 
 .button:hover {
     background-color: #dde7ddf1;
-    border: 3px solid #6a8f6b;
+    border: 1px solid #6a8f6b;
     cursor: pointer;
 }
 
@@ -124,10 +124,12 @@ img {
 .screenText {
     margin: 0 20px 5px 0;
     font-size: 40px;
+    color: #221c42;
 }
 
 .running {
     margin: 0 20px 10px 0;
+    color:#221c42;
 }
 
 .footer {
@@ -138,6 +140,7 @@ img {
 
     width: 100vw;
     height: 7vh;
+    border-top: 3px solid #6a8f6b;
     background-color: #221c42;
     color: #ffe0c9;
 }
