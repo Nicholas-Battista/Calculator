@@ -46,7 +46,7 @@ body {
 .screen {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: flex-end;
 
     width: 360px;
@@ -54,6 +54,9 @@ body {
 
     border: 1px solid black;
     background-color: #ffe0c9;
+    overflow: hidden; 
+    white-space: nowrap;
+    border-radius: 5px;
 }
 
  .button-container {
@@ -93,6 +96,7 @@ body {
 .clearDelete button {
     width: 150px;
     padding: 10px;
+    letter-spacing: 2px;
 }
 
 .button {
@@ -106,7 +110,8 @@ body {
   }
 
 .button:hover {
-    background-color: #dde7ddbb;
+    background-color: #dde7ddf1;
+    border: 3px solid #6a8f6b;
     cursor: pointer;
 }
 
@@ -117,8 +122,12 @@ img {
 }
 
 .screenText {
-    margin: 0 30px 5px 0;
-    font-size: 30px;
+    margin: 0 20px 5px 0;
+    font-size: 40px;
+}
+
+.running {
+    margin: 0 20px 10px 0;
 }
 
 .footer {
