@@ -136,8 +136,10 @@ function performPendingOperation() {
             a = subtract(a, b);
             break;
         case '×':
+        case '*':
             a = multiply(a, b);
             break;
+        case '÷':
         case '/':
             a = divide(a, b);
             break;
@@ -159,8 +161,7 @@ function multiply(a, b){
 
 function divide(a, b){
     if (b === 0) {
-        alert("Cannot divide by zero!");
-        return 0;
+        return "Can't Divide by 0!";
     }
     return a / b;
 }
