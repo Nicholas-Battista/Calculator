@@ -5,32 +5,52 @@ const operators = Array.from(document.querySelectorAll('.op'));
 const CLEAR = document.querySelector('.clear');
 const DELETE = document.querySelector('.delete');
 const DECIMAL = document.querySelector('.decimal');
+const EQUALS = document.querySelector('.equal');
 
 let result;
+let a;
+let b;
+let inMiddleOfOperation = false;
+let pendingOperation = null;
 
 
 numberInput.forEach(btn => {
     btn.addEventListener("click", () => {
         const clickedNumber = btn.innerHTML;
 
-        if (screenText.innerHTML === '0') {
+        if (inMiddleOfOperation) {
             screenText.innerHTML = clickedNumber;
-        }
-        else {
-            screenText.innerHTML = screenText.innerHTML.concat(clickedNumber);
+            inMiddleOfOperation = false;
+        } else {
+            if (screenText.innerHTML === '0') {
+                screenText.innerHTML = clickedNumber;
+            } else {
+                screenText.innerHTML = screenText.innerHTML.concat(clickedNumber);
+            }
         }
     });
 });
 
 operators.forEach(operator => {
     operator.addEventListener('click', () => {
-        runningText.innerHTML = screenText.innerHTML + " " + operator.innerHTML;
+        if (pendingOperation !== null) {
+            b = parseInt(screenText.innerHTML);
+            performPendingOperation()
+        } else {
+            a = parseInt(screenText.innerHTML);
+        }
+
+        runningText.innerHTML = screenText.innerHTML + " " + operator.innerHTML + " ";
+        inMiddleOfOperation = true;
+        pendingOperation = operator.innerHTML;
     })
 });
 
 CLEAR.addEventListener('click', () => {
     screenText.innerHTML = '0';
     runningText.innerHTML = '';
+    inMiddleOfOperation = false;
+    pendingOperation = null;
 });
 
 DELETE.addEventListener('click', () => {
@@ -48,20 +68,47 @@ DECIMAL.addEventListener('click', () => {
     }
 });
 
+EQUALS.addEventListener('click', () => {
+    if (pendingOperation !== null) {
+        b = parseInt(screenText.innerHTML);
+        performPendingOperation()
+        pendingOperation = null;
+        inMiddleOfOperation = false;
+
+        runningText.innerHTML = runningText.innerHTML.concat(b) + " =";
+    }
+});
+
+function performPendingOperation() {
+    switch (pendingOperation) {
+        case '+':
+            a = add(a, b);
+            break;
+        case '-':
+            a = subtract(a, b);
+            break;
+        case '×':
+            a = multiply(a, b);
+            break;
+        case '÷':
+            a = divide(a, b);
+            break;
+    }
+    screenText.innerHTML = result;
+}
+
 function add(a, b){
-   return result = a + b;
-}
-
-function subtract(a, b){
-    return result = a - b;
-}
-
-function multiply(a, b){
-    return result = a * b;
-}
-
-function divide(a, b){
-    return result = a / b;
-}
-
-// upon click of any of the operators need to send the screentexthtml to a new p above it with the operator next to it, and store the initial value of the innerhtml in var a, then on next click of number have that override the innerhtml, then store second number in var b.
+    return result = a + b;
+ }
+ 
+ function subtract(a, b){
+     return result = a - b;
+ }
+ 
+ function multiply(a, b){
+     return result = a * b;
+ }
+ 
+ function divide(a, b){
+     return result = a / b;
+ }
