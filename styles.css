@@ -40,7 +40,8 @@ body {
 
 .screen {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: flex-end;
 
     width: 360px;
@@ -108,7 +109,7 @@ img {
     height:33px;
 }
 
-.screen p {
-    margin-right: 30px;
+.screenText {
+    margin: 0 30px 5px 0;
     font-size: 30px;
 }
