@@ -137,11 +137,11 @@ function performPendingOperation() {
             break;
         case '×':
         case '*':
-            a = multiply(a, b);
+            a = multiply(a, b).toFixed(2);
             break;
         case '÷':
         case '/':
-            a = divide(a, b);
+            a = divide(a, b).toFixed(2);
             break;
     }
     screenText.innerHTML = a;

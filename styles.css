@@ -93,7 +93,7 @@ body {
 
 .button {
     padding: 20px;
-    border: 2px #dde7dd79 solid;
+    border: none;
     border-bottom: 2px solid #221c4241;
     border-radius: 15px;
     background-color: #dde7dd;
@@ -101,7 +101,7 @@ body {
     color: #221c42;
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
-    box-shadow: 0px 10px 20px rgba(34, 28, 66, 0.8);
+    box-shadow: 0px 15px 10px -15px #111; 
     transition: box-shadow 0.3s ease;
   }
 
