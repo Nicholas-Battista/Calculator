@@ -8,6 +8,7 @@ body {
     background-color: #ffe0c9;
 
     font-family: 'Lato', sans-serif;
+    touch-action: manipulation;
 }
 
 .container {
@@ -157,4 +158,10 @@ img {
 
 .footer img:hover {
     transform: rotate(360deg) scale(1.1);
+}
+
+@media (max-width: 600px) {
+    .running {
+        font-size: 20px; 
+    }
 }
