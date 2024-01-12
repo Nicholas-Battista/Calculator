@@ -13,6 +13,51 @@ let b;
 let inMiddleOfOperation = false;
 let pendingOperation = null;
 
+function handleNumericKey(key) {
+    if (inMiddleOfOperation) {
+        screenText.innerHTML = key;
+        inMiddleOfOperation = false;
+    } else {
+        screenText.innerHTML = screenText.innerHTML === '0' ? key : screenText.innerHTML + key;
+    }
+}
+
+document.addEventListener('keydown', (event) => {
+    const key = event.key;
+    
+        if (key >= '0' && key <= '9') {
+            handleNumericKey(key);
+        } else if (key === '*' || key === '/' || key === '+' || key === '-') {
+            handleOperatorKey(key);
+        } else if (key === '=' || key === 'Enter') {
+            handleEqualsKey();
+        } else if (key === 'Backspace') {
+            handleBackspaceKey();
+        }
+});
+
+function handleOperatorKey(key) {
+    if (!inMiddleOfOperation) {
+        a = parseFloat(screenText.innerHTML);
+        pendingOperation = key;
+        runningText.innerHTML = screenText.innerHTML + " " + key + " ";
+        inMiddleOfOperation = true;
+    }
+}
+
+function handleEqualsKey() {
+    if (pendingOperation !== null) {
+        b = parseFloat(screenText.innerHTML);
+        performPendingOperation(pendingOperation);
+        pendingOperation = null;
+        inMiddleOfOperation = false;
+        runningText.innerHTML = runningText.innerHTML.concat(b) + " =";
+    }
+}
+
+function handleBackspaceKey() {
+    screenText.innerHTML = screenText.innerHTML.slice(0, -1) || '0';
+}
 
 numberInput.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -51,6 +96,7 @@ CLEAR.addEventListener('click', () => {
     runningText.innerHTML = '';
     inMiddleOfOperation = false;
     pendingOperation = null;
+    CLEAR.blur();
 });
 
 DELETE.addEventListener('click', () => {
@@ -79,18 +125,18 @@ EQUALS.addEventListener('click', () => {
     }
 });
 
-function performPendingOperation() {
-    switch (pendingOperation) {
+function performPendingOperation(operator) {
+    switch (operator) {
         case '+':
             a = add(a, b);
             break;
         case '-':
             a = subtract(a, b);
             break;
-        case '×':
+        case '*':
             a = multiply(a, b);
             break;
-        case '÷':
+        case '/':
             a = divide(a, b);
             break;
     }
