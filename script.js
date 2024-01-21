@@ -141,10 +141,10 @@ EQUALS.addEventListener("click", () => {
 function performPendingOperation() {
   switch (pendingOperation) {
     case "+":
-      a = add(a, b);
+      a = add(a, b).toFixed(2);
       break;
     case "-":
-      a = subtract(a, b);
+      a = subtract(a, b).toFixed(2);
       break;
     case "×":
     case "*":
